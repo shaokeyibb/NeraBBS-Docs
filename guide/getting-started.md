@@ -20,6 +20,10 @@
 
 此部署方式推荐于多节点部署生产环境的使用者。
 
+### 部署步骤
+
+1. 转到 `/kubernetes-manifests`，然后顺次部署 `namespace`, `configmap`, `middleware`, `service`, `ingress` 即可。
+
 ## （部分）手动部署
 
 此部署方式推荐于本地部署开发环境的使用者。
