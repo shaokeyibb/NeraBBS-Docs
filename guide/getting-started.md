@@ -24,7 +24,7 @@
 
 1. 转到 `/kubernetes-manifests`，然后顺次部署 `namespace`, `configmap`, `middleware`, `service`, `ingress` 即可。
 
-## （部分）手动部署
+## 手动部署
 
 此部署方式推荐于本地部署开发环境的使用者。
 
@@ -33,14 +33,11 @@
 - 安装 Docker Desktop 或 Docker Engine 或 Podman（需要配置启用 Podman Compose 并登录到 Docker Registry）
 - 安装 Java 21
 - 安装 Node 22 并启用 corepack（或手动安装 pnpm）
-- 安装 Caddy
 
 ### 部署步骤
 
-1. 移除 `/docker-compose.yml` 文件的 `services.caddy.ports` 部分
-2. 执行 `docker compose up -d`，等待构建镜像完成
-3. 转到 `/frontend` 目录，执行 `pnpm dev`
-4. 以 `/dev/Caddyfile` 配置运行 Caddy
-5. 转到 [https://localhost](https://localhost) 或您的业务域名
+1. 转到 `/dev`，然后执行 `./run-dev.sh`
+2. 遵照 [此文档](/guide/troubleshooting/browser-your-connection-is-not-private) 安装 Caddy 根证书
+3. 转到 [https://localhost](https://localhost)
 
-此时前端服务由用户自行启动的 Vite Dev Server 和 Caddy 托管，其余服务仍由容器服务托管。
+此时中间件由容器服务托管，业务服务由本地托管。注意使用此模式部署时，Caddy 将不再直接连接到应用网关（Spring Cloud Gateway），而是先连接到 Vite Dev Server，随后由后者转发前往 `/api` 端点的请求至应用网关。
