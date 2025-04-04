@@ -27,6 +27,27 @@ export default defineConfig(withI18n({
           ]
         },
         {
+          text: '后端',
+          collapsed: false,
+          items: [
+
+          ]
+        },
+        {
+          text: '前端',
+          collapsed: false,
+          items: [
+
+          ]
+        },
+        {
+          text: '中间件',
+          collapsed: false,
+          items: [
+
+          ]
+        },
+        {
           text: '疑难解答',
           collapsed: true,
           items: [
